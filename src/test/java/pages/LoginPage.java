@@ -2,6 +2,9 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import java.time.Duration;
 
 public class LoginPage {
     private WebDriver driver;
@@ -53,4 +56,17 @@ public class LoginPage {
         }
         return "";
     }
+
+    public void login2(String user, String pass) {
+        ingresarCredenciales(user, pass);
+        clickLogin();
+    }
+
+    public void clickLogin2() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        wait.until(ExpectedConditions.elementToBeClickable(loginBtn));
+        driver.findElement(loginBtn).click();
+    }
+
+
 }
